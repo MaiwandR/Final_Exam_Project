@@ -19,5 +19,10 @@ If not -> ERROR MESSAGE -> same Page
 
 ### Important Resources:
 - API Documentation: https://www.alphavantage.co/documentation/
-
+- This is what your .env should look like:
+  - API_KEY = '4T8RGLNO9B2C5PCI'
+  - DB_CONNECT_STRING = 'mongodb+srv://maiwandraheem:Wawreena1234@cluster0.2rftkuj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+  - DB_NAME = Stocks
+  - MONGO_COLLECTION = userStocks
+  - SESSION_SECRET = '8c62812784392ae64d9b07e3e3355e32cb20cf636c9a36927ab77ddb3c40912c'
     
