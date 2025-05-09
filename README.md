@@ -1,5 +1,23 @@
 # Final_Exam_Project: *TradersHub*
-<hr>
+
 ### Main Features: 
-- **Stock Front Page:** This will be the homepage and will use the API to show active, profitiable, and losing stocks
-  - API URL HOME: https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=demo (Make a free API Key and use it while you are working)
+- **Stock Front Page:** This will be the homepage and will use the API to show active, profitable, and losing stocks
+
+  - **API URL HOME**: https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=demo *(Make a free API Key and use it while you are working)*
+  - For the page in the current version, I have dummy data you can use if you run out of tokens for the API
+- **Stock Detail Page:** This page will take a stock name like TSLA, AAPL, etc, and then show info about it. Currently, just the opening and closing data of the last 10 days for a stock.
+    - **Detail Page URL:** https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=AAPL&apikey=demo
+- **Register Page:** This page will basically be activated when someone wants to buy or sell. *(For this page to show up the session.userid should no exist)*
+    - Data is saved to monogodb and you can acess my acount since I'll make it open for everyone.
+- **Login Page**: Just a way for users to enter their username and password -> this is checked in MongoDB, and if they are correct, they are taken -> HOMEPAGE
+If not -> ERROR MESSAGE -> same Page
+
+### Features Yet Completed:
+- Buy Button: must increase the share amount for a stock
+- Sell Button: Must decrease the share amount for a stock
+- User dashboard with owned stocks and history of transactions
+
+### Important Resources:
+- API Documentation: https://www.alphavantage.co/documentation/
+
+    
