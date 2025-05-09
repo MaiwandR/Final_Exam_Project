@@ -1,0 +1,230 @@
+body{
+    background-color: #0c0c0c;
+    font-family: 'Avenir';
+    color: white;
+}
+
+h1{
+    text-align: center;
+    font-size: 3rem;
+}
+
+h2{
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 4rem;
+}
+
+.searchForm{
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+    gap: 4rem;
+}
+
+.searchForm input{
+    padding: 10px;
+    font-size: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 2rem;
+}
+
+.searchForm button{
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    background-color: yellowgreen;
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.searchForm button:hover{
+    transform: scale(1.05);
+    box-shadow: 5px 7px green;
+}
+
+.update{
+    display: inline-block; /* Make it shrink to fit content */
+    padding: 0.5rem 1rem;
+    margin: 2rem auto; /* Center it horizontally */
+    font-size: 1.5rem;
+    background-color: yellowgreen;
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.starGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.star {
+    width: 250px;
+    height: 250px;
+    background-color: #333;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 5px 7px yellowgreen;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.star:hover {
+    transform: scale(1.05);
+   
+}
+
+.loserGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.loser {
+    width: 250px;
+    height: 250px;
+    background-color: #333;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 5px 7px red;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.loser:hover {
+    transform: scale(1.05);
+}
+
+.activeGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.active {
+    width: 250px;
+    height: 250px;
+    background-color: #333;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 5px 7px goldenrod;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.active:hover {
+    transform: scale(1.05);
+}
+
+
+.detailTitle {
+    text-align: center;
+    font-size: 7rem;
+    margin-top: 4rem;
+    
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.add{
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    background-color: yellowgreen;
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.remove{
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    background-color: crimson;
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.register{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 4rem;
+    background-color: #333;
+    width: 600px;
+    margin-left: 30vw;
+    border-radius: 2rem;
+    box-shadow:0 0 15px 5px skyblue;
+
+}
+
+.register label{
+    font-size: 1.5rem;
+    color: white;
+}
+
+.register input{
+    padding: 10px;
+    padding-left: 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 2rem;
+}
+
+.register button{
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    background-color: skyblue;
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.register button:hover{
+    transform: scale(1.05);
+    box-shadow: 5px 7px darkblue;
+}
+
+.register a{
+    text-decoration: none;
+    color: skyblue;
+    font-size: 1rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+.register a:hover{
+    text-decoration: underline;
+}

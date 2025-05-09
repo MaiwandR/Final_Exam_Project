@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Details</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    
+    <h1 class="detailTitle"><%= name %></h1>
+    <div style="text-align: center;">
+        <p class="update"><%= update || 'Last Updated: N/A' %></p>
+    </div>
+
+    <div style="width: 80%; margin: auto;">
+        <canvas id="stockChart"></canvas>
+    </div>
+
+    <div class="buttons">
+        <form action="/add-stock" class="addForm">
+            <button type="submit" class="add">BUY</button>
+        </form>
+       <form action="/remove-stock" class="removeForm">
+            <button type="submit" class="remove">SELL</button>
+       </form>
+    </div>
+
+
+    <script>
+        const dates = <%- JSON.stringify(lastTen.map(day => day.date)) %>;
+        const closePrices = <%- JSON.stringify(lastTen.map(day => parseFloat(day.close))) %>;
+        const openPrices = <%- JSON.stringify(lastTen.map(day => parseFloat(day.open))) %>;
+        const ctx = document.getElementById('stockChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: dates.reverse(), // oldest to newest
+                datasets: [
+                {
+                    label: '<%= name %> Closing Price',
+                    data: closePrices.reverse(),
+                    borderColor: 'yellowgreen',
+                    backgroundColor: 'yellowgreen',
+                    tension: 0.1
+                },
+                {
+                    label: '<%= name %> Opening Price',
+                    data: openPrices.reverse(),
+                    borderColor: 'royalblue',
+                    backgroundColor: 'royalblue',
+                    tension: 0.1
+                }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Last 10 Days - Closing Prices VS Opening Prices',
+                        font:{
+                            size: 20,
+                            weight: 'bold'
+                        }
+                    },
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+        const addButton = document.querySelector('.add');
+        const removeButton = document.querySelector('.remove');
+        const watchlistButton = document.querySelector('.watchlist');
+
+
+    </script>
+
+
+
+</body>
+</html>
