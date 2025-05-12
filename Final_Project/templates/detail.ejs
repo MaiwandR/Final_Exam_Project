@@ -19,9 +19,11 @@
     </div>
 
     <div class="buttons">
-        <form action="/add-stock" class="addForm">
-            <button type="submit" class="add">BUY</button>
-        </form>
+        <div class="buttons">
+        <a href="/buy?ticker=<%= name %>&price=<%= lastTen[0].close %>">
+            <button type="button" class="add">BUY</button>
+        </a>
+            
        <form action="/remove-stock" class="removeForm">
             <button type="submit" class="remove">SELL</button>
        </form>
