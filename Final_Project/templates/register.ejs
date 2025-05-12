@@ -21,5 +21,15 @@
         <button type="submit">Register</button>
         <p>Already have an account? <a href="/login">Login here</a></p>
     </form>
+    
+    <% if (error && error.length > 0) { %>
+    <div style="color: crimson; font-weight: bold; font-size: 1.2rem; margin-top: 20px; text-align: center;">
+    <% error.forEach(err => { %>
+      <p><%= err %></p>
+    <% }) %>
+  </div>
+<% } %>
+
+
 </body>
 </html>
