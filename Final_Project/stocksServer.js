@@ -23,7 +23,6 @@ app.use(session({
 app.set('view engine', 'ejs'); // ✅ add this
 app.set('views', './templates'); // ✅ add this too
 
-  
 
 const PORT = 3000;
 
@@ -37,7 +36,7 @@ MongoClient.connect(process.env.DB_CONNECT_STRING)
   .then(client => {
     db = client.db(process.env.DB_NAME);
     app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
+      console.log(`Server is running on: http://127.0.0.1:${PORT}`);
     });
   })
   .catch(error => {
@@ -147,6 +146,35 @@ app.get('/search/:name', (req, res) => {
           });
 });
 
+app.get('/buy', async (req, res) => {
+    const userId = req.session.userId;
+    if (!userId) {
+        return res.redirect('/login');
+    }
+    const user = await db.collection('userStocks').findOne({ _id: new ObjectId(userId) });
+        const ticker = req.query.ticker || ''; 
+        const price = req.query.price || '';
+        const message = req.session.message || null;
+      delete req.session.message;
+    res.render('buy', { user,ticker, price, message });
+});
+
+app.post('/buy', async (req, res) => {
+    const { ticker, price, amount } = req.body;
+    const parseamount = parseFloat(amount);
+    const parsedPrice = parseFloat(price);
+    const total = parseamount * parsedPrice; 
+    const userId = req.session.userId;
+    const user = await db.collection('userStocks').findOne({ _id: new ObjectId(userId) });
+    const bought = user.bought || [];
+    bought.push({ ticker, price: parsedPrice, amount: parseamount, total });
+    await db.collection('userStocks').updateOne(
+      { _id: new ObjectId(userId) },
+       { $set: { bought } });
+       const message = `Successfully purchased ${parseamount} share(s) of ${ticker} at $${parsedPrice.toFixed(2)} each.`;
+    req.session.message = message;
+    res.redirect('/buy');
+});
 
 // The first register renders the register.ejs file
 // The second one is used to register the user
@@ -154,12 +182,35 @@ app.get('/search/:name', (req, res) => {
 // We also set the current user ID in the session from the database
 
 app.get('/register', (req, res) => {
-    res.render('register');
+    res.render('register', { error: null });
 });
 
 app.post('/register', async (req, res) => {
-    const {username, email, password} = req.body;
+  const username = req.body.username.trim();
+  const password = req.body.password.trim();   
+  const email = req.body.email.trim(); 
     const hashedPassword = await bcrypt.hash(password, 10);
+    const existingUser = await db.collection('userStocks').findOne({ username });
+    error = [];
+    if (!username || !password || !email) {
+        error.push('All fields are required');
+        return res.render('register', { error: error});
+    }
+
+    if (existingUser) {
+         error.push('Username already exists');
+    }
+    const existingEmail = await db.collection('userStocks').findOne({ email });
+    if (existingEmail) {
+         error.push('Email already exists');
+    }
+    if (password.length < 6) {
+         error.push('Password must be at least 6 characters long');
+    }
+    if (error.length > 0) {
+        return res.render('register', { error });
+
+    }
     const user = await db.collection('userStocks').insertOne({
         username,
         email,
@@ -169,7 +220,7 @@ app.post('/register', async (req, res) => {
         sold: [],
     });
     req.session.userId = user.insertedId;
-    res.redirect('/');
+    res.redirect('/login');
 } );
 
 // The first login renders the login.ejs file
@@ -183,9 +234,17 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/login', async (req, res) => {
-    const {username, password} = req.body;
-    const user = await db.collection('userStocks').findOne({username});
-    if (user && await bcrypt.compare(password, user.password)) {
+    const username = req.body.username.trim();
+      const password = req.body.password.trim();    
+      const user = await db.collection('userStocks').findOne({username});
+    if (!user) {
+        const error = 'Invalid username or password';
+        return res.render('login', { error });
+    }
+
+    const passwordMatches = await bcrypt.compare(password, user.password);
+
+    if (passwordMatches) {
         req.session.userId = user._id;
         res.redirect('/');
     } else{
