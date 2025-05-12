@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Stocks</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Buy Stocks</h1>
+    <h2>Enter the amount of shares you want to buy</h2>
+
+    <!-- Buy Form -->
+    <form action="/buy" method="post">
+        <div class = "buy-form">
+        <input type="text" name="ticker" value="<%= ticker %>" readonly required>
+        <input type="number" name="price" value="<%= price %>" readonly>
+        <input type="number" name="amount" step="any" placeholder="# Shares to buy" required>
+        <button type="submit" id = "sumb">Buy</button>
+         <a href="/" id = "back">Back to Home</a>    <!-- Back to Home -->
+
+        </div>
+    </form>
+        
+    <% if (message) { %>
+    <p style="color: green; font-weight: bold; font-size: 2rem;"><%= message %></p>
+    <% } %>
+
+</body>
+</html>
+
+
