@@ -176,6 +176,59 @@ app.post('/buy', async (req, res) => {
     res.redirect('/buy');
 });
 
+app.get('/sell', async (req, res) => {
+  const userId = req.session.userId;
+  if (!userId) return res.redirect('/login');
+
+  const user = await db.collection('userStocks').findOne({ _id: new ObjectId(userId) });
+  const ticker = req.query.ticker || '';
+  const price = req.query.price || '';
+  const message = req.session.sellMessage || null;
+  delete req.session.sellMessage;
+
+  res.render('sell', { user, ticker, price, message });
+});
+
+app.post('/sell', async (req, res) => {
+  const { ticker, price, amount } = req.body;
+  const quantityToSell = parseFloat(amount);
+  const currentPrice = parseFloat(price);
+  const userId = req.session.userId;
+
+  const user = await db.collection('userStocks').findOne({ _id: new ObjectId(userId) });
+
+  const totalBought = (user.bought || [])
+    .filter(tx => tx.ticker === ticker)
+    .reduce((sum, tx) => sum + tx.amount, 0);
+
+  const totalSold = (user.sold || [])
+    .filter(tx => tx.ticker === ticker)
+    .reduce((sum, tx) => sum + tx.amount, 0);
+
+  const available = totalBought - totalSold;
+
+  if (quantityToSell > available) {
+    req.session.sellMessage = `You only have ${available} share(s) of ${ticker} to sell.`;
+    return res.redirect(`/sell?ticker=${ticker}&price=${price}`);
+  }
+
+  const sold = user.sold || [];
+  sold.push({
+    ticker,
+    price: currentPrice,
+    amount: quantityToSell,
+    total: currentPrice * quantityToSell,
+  });
+
+  await db.collection('userStocks').updateOne(
+    { _id: new ObjectId(userId) },
+    { $set: { sold } }
+  );
+
+  req.session.sellMessage = `Sold ${quantityToSell} share(s) of ${ticker} at $${currentPrice.toFixed(2)}.`;
+  res.redirect(`/sell?ticker=${ticker}&price=${price}`);
+});
+
 // The first register renders the register.ejs file
 // The second one is used to register the user
 // We hash the password using bcrypt and store it in the database
