@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sell Stocks</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Sell Stocks</h1>
+    <h2>Enter the amount of shares you want to sell</h2>
+
+    <form action="/sell" method="post">
+        <div class="buy-form">
+            <input type="text" name="ticker" value="<%= ticker %>" readonly required>
+            <input type="number" name="price" value="<%= price %>" readonly>
+            <input type="number" name="amount" step="any" placeholder="# Shares to sell" required>
+            <button type="submit" id="sumb">Sell</button>
+            <a href="/" id="back">Back to Home</a>
+        </div>
+    </form>
+
+    <% if (message) { %>
+        <p style="color: crimson; font-weight: bold; font-size: 2rem;"><%= message %></p>
+    <% } %>
+</body>
+</html>
