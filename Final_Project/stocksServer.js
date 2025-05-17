@@ -176,6 +176,50 @@ app.post('/buy', async (req, res) => {
     res.redirect('/buy');
 });
 
+app.get('/dashboard', async (req, res) => {
+  if (!req.session.userId) {
+    return res.redirect('/login');
+  }
+
+  try {
+    const user = await db.collection(process.env.MONGO_COLLECTION).findOne({ _id: new ObjectId(req.session.userId) });
+
+    const bought = user.bought || [];
+const sold = user.sold || [];
+
+const ownedStocks = {};
+
+// Aggregate bought
+bought.forEach(txn => {
+  if (!ownedStocks[txn.ticker]) {
+    ownedStocks[txn.ticker] = 0;
+  }
+  ownedStocks[txn.ticker] += txn.amount;
+});
+
+// Subtract sold
+sold.forEach(txn => {
+  if (!ownedStocks[txn.ticker]) {
+    ownedStocks[txn.ticker] = 0;
+  }
+  ownedStocks[txn.ticker] -= txn.amount;
+});
+
+// Remove stocks with 0 or less shares
+Object.keys(ownedStocks).forEach(ticker => {
+  if (ownedStocks[ticker] <= 0) {
+    delete ownedStocks[ticker];
+  }
+});
+
+   res.render('dashboard', { user, ownedStocks });
+  } catch (err) {
+    console.error('Error fetching user stocks:', err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
 app.get('/sell', async (req, res) => {
   const userId = req.session.userId;
   if (!userId) return res.redirect('/login');

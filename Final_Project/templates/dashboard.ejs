@@ -1,1 +1,50 @@
- 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>Welcome to Your Dashboard</h1>
+
+  <h2>Owned Stocks</h2>
+  <% if (Object.keys(ownedStocks).length === 0) { %>
+    <p>You do not own any stocks yet.</p>
+  <% } else { %>
+    <table border="1">
+      <tr>
+        <th>Ticker</th>
+        <th>Total Shares</th>
+      </tr>
+      <% for (let ticker in ownedStocks) { %>
+        <tr>
+          <td><%= ticker %></td>
+          <td><%= ownedStocks[ticker] %></td>
+        </tr>
+      <% } %>
+    </table>
+  <% } %>
+
+  <h2>Transaction History</h2>
+  <% if (user.bought && user.bought.length > 0) { %>
+    <h3>Purchases</h3>
+    <ul>
+      <% user.bought.forEach(tx => { %>
+        <li>BUY <%= tx.amount %> share(s) of <%= tx.ticker %> at $<%= tx.price %> each</li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <% if (user.sold && user.sold.length > 0) { %>
+    <h3>Sales</h3>
+    <ul>
+      <% user.sold.forEach(tx => { %>
+        <li>SELL <%= tx.amount %> share(s) of <%= tx.ticker %> at $<%= tx.price %> each</li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <br>
+  <a href="/">Back to Home</a> | <a href="/logout">Logout</a>
+</body>
+</html>
