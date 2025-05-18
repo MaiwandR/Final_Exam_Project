@@ -8,11 +8,13 @@
 </head>
 <body>
     <h1>Buy Stocks</h1>
-    <h2>Enter the amount of shares you want to buy</h2>
+   
 
     <!-- Buy Form -->
     <form action="/buy" method="post">
+        
         <div class = "buy-form">
+            <h2>Enter the amount of shares you want to buy</h2>
         <input type="text" name="ticker" value="<%= ticker %>" readonly required>
         <input type="number" name="price" value="<%= price %>" readonly>
         <input type="number" name="amount" step="any" placeholder="# Shares to buy" required>
@@ -28,5 +30,3 @@
 
 </body>
 </html>
-
-

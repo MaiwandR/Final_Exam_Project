@@ -7,6 +7,20 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+  
+  <a href="/dashboard" class="bottom">
+    Dashboard
+  </a>
+
+  <div class="topButtons">
+    <a class="homeButton" href="/">Home</a>
+    <% if (logginIn) { %>
+      <a href="/logout" class="logButton">Logout</a>
+    <% } else { %>
+      <a href="/login" class="logButton">Login</a>
+    <% } %>
+  </div>
+
     <h1>Welcome to TradersHub!</h1>
     <h2>Your one stop destination for all things trading</h2>
 
@@ -31,9 +45,12 @@
                 { ticker: 'MSFT', price: 320.40, change_amount: 3.45 }
               ]).forEach(stock => {
             %>
+            <a href="/search/<%= stock.ticker%>" class="link" >
               <li class="star card"><%= stock.ticker %> - <%= stock.price %>
                 <p> Gains: <%= stock.change_amount %>$ </p>
               </li>
+            </a>
+              
             <% }) %>
         </ul>
 
@@ -45,9 +62,11 @@
                 { ticker: 'META', price: 290.00, change_amount: -3.25 }
               ]).forEach(loser => {
             %>
+            <a href="/search/<%= loser.ticker%>" class="link" >
               <li class="loser card"><%= loser.ticker %> - <%= loser.price %>
                 <p> Losses: <%= loser.change_amount %>$ </p>
               </li>
+            </a>
             <% }) %>
         </ul>
 
@@ -59,9 +78,11 @@
                 { ticker: 'NVDA', price: 480.00, volume: 7200000 }
               ]).forEach(active => {
             %>
+            <a href="/search/<%= active.ticker%>" class="link" >
               <li class="active card"><%= active.ticker %> - <%= active.price %>
                 <p> Volume: <%= active.volume %> </p>
               </li>
+            </a>
             <% }) %>
         </ul>
     </div>

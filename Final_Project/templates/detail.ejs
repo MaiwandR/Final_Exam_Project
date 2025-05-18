@@ -8,6 +8,19 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+
+    <a href="/dashboard" class="bottom">
+        Dashboard
+      </a>
+    
+      <div class="topButtons">
+        <a class="homeButton" href="/">Home</a>
+        <% if (logginIn) { %>
+          <a href="/logout" class="logButton">Logout</a>
+        <% } else { %>
+          <a href="/login" class="logButton">Login</a>
+        <% } %>
+      </div>
     
     <h1 class="detailTitle"><%= name %></h1>
     <div style="text-align: center;">
@@ -19,12 +32,10 @@
     </div>
 
     <div class="buttons">
-        <div class="buttons">
-        <a href="/buy?ticker=<%= name %>&price=<%= lastTen[0].close %>">
+        <a href="/buy?ticker=<%= name %>&price=<%= lastTen[0].close %>" class="addForm">
             <button type="button" class="add">BUY</button>
         </a>
-            
-        <a href="/sell?ticker=<%= name %>&price=<%= lastTen[0].close %>">
+        <a href="/sell?ticker=<%= name %>&price=<%= lastTen[0].close %>" class="removeForm">
             <button type="button" class="remove">SELL</button>
         </a>
     </div>

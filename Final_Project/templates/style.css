@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Barrio&family=Zen+Dots&display=swap');
+
 body{
     background-color: #0c0c0c;
     font-family: 'Avenir';
@@ -7,6 +9,8 @@ body{
 h1{
     text-align: center;
     font-size: 3rem;
+    font-family: "Zen Dots", sans-serif;
+    color: skyblue;
 }
 
 h2{
@@ -17,24 +21,28 @@ h2{
 
 .searchForm{
     display: flex;
+    flex-direction: row;
     justify-content: center;
     margin: 2rem;
     gap: 4rem;
 }
 
 .searchForm input{
+    flex: none;
     padding: 10px;
     font-size: 1.5rem;
-    border: 1px solid #ccc;
+    border: 3px solid #ccc;
     border-radius: 2rem;
 }
 
 .searchForm button{
+    flex: none; /* Prevent flex from resizing the button */
     padding: 10px 20px;
     font-size: 1.5rem;
     background-color: yellowgreen;
     color: white;
     border: none;
+    font-weight: bold;
     border-radius: 2rem;
     cursor: pointer;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -44,6 +52,7 @@ h2{
     transform: scale(1.05);
     box-shadow: 5px 7px green;
 }
+
 
 .update{
     display: inline-block; /* Make it shrink to fit content */
@@ -229,6 +238,82 @@ h2{
     text-decoration: underline;
 }
 
+.homeButton{
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    background-color: skyblue;
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.homeButton:hover{
+    transform: scale(1.05);
+}
+
+.logButton{
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    background-color: skyblue;
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.logButton:hover{
+    transform: scale(1.05);
+}
+
+.buttons a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+   font-weight: bold;
+    transition: transform 0.3s ease-in-out;
+}
+.buttons a:hover{
+    transform: scale(1.1);
+}
+
+.topButtons{
+    position: fixed;
+    top: 2;
+    right:1%;
+    
+}
+
+.topButtons a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.bottom{
+    position: fixed;
+    top: 3%;
+    left: 2%;
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    background-color: skyblue;
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link{
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
 .buy-form{
     display: flex;
     justify-content: center;
@@ -243,13 +328,27 @@ h2{
     box-shadow:0 0 15px 5px skyblue;
 }
 
-input{
+.buy-form input{
     font-size: 1.7rem;
     display:flex;
     margin-top: 2rem;
     justify-content: center;
     align-items: center;
+    padding: 7px;
+    padding-left: 15px;
+    border-radius: 2rem;
 }
+
+/* input{
+    font-size: 1.7rem;
+    display:flex;
+    margin-top: 2rem;
+    justify-content: center;
+    align-items: center;
+    padding: 7px;
+    padding-left: 15px;
+    border-radius: 2rem;
+} */
 
 #sumb {
     font-size: 2rem;
@@ -281,6 +380,19 @@ input{
 
 #back{
     font-size: 1.3rem;
-    color:white;
+    color: skyblue;
     margin-bottom: 1rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.card a{
+    text-decoration: none;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.card{
+    font-weight: bold;
 }

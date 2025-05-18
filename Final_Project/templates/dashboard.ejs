@@ -5,46 +5,68 @@
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+    <div class="topButtons">
+        <a class="homeButton" href="/">Home</a>
+        <a class="logButton"  href="/logout">Logout</a>
+    </div>
   <h1>Welcome to Your Dashboard</h1>
 
-  <h2>Owned Stocks</h2>
+  <div class="buttons">
+    <a class="add" href="/buy">Buy Stocks</a>
+    <a href="/sell" class="remove">Sell Stocks</a>
+    
+  </div>
+
+  <h2 style="font-size: 3rem;">Transaction History</h2>
+
+
+
+  <h2 style="color: goldenrod;">Owned Stocks</h2>
   <% if (Object.keys(ownedStocks).length === 0) { %>
     <p>You do not own any stocks yet.</p>
   <% } else { %>
-    <table border="1">
-      <tr>
-        <th>Ticker</th>
-        <th>Total Shares</th>
-      </tr>
-      <% for (let ticker in ownedStocks) { %>
-        <tr>
-          <td><%= ticker %></td>
-          <td><%= ownedStocks[ticker] %></td>
-        </tr>
-      <% } %>
-    </table>
-  <% } %>
+    <ul class="activeGrid">
+        <% for (let ticker in ownedStocks) { %>
+            <li class="active card">
+            <a href="/buy?ticker=<%= ticker %>&price=<%= ownedStocks[ticker].price %>">
+                <p><%= ticker %></p>
+                <p>Shares: <%= ownedStocks[ticker] %></p>
+            </a>
+            </li>
+        <% } %>
 
-  <h2>Transaction History</h2>
+    </ul>
+    <% } %>
+
+ 
   <% if (user.bought && user.bought.length > 0) { %>
-    <h3>Purchases</h3>
-    <ul>
+    <h2 style="color: yellowgreen;">Purchases</h2>
+    <ul class="starGrid">
       <% user.bought.forEach(tx => { %>
-        <li>BUY <%= tx.amount %> share(s) of <%= tx.ticker %> at $<%= tx.price %> each</li>
+        <li class="star card">
+           <p>BUY <%= tx.ticker %> </p> 
+            <p>Amount: <%= tx.amount %> </p>
+            <p>Price: $<%= tx.price %></p>
+        </li>
       <% }) %>
     </ul>
   <% } %>
 
   <% if (user.sold && user.sold.length > 0) { %>
-    <h3>Sales</h3>
-    <ul>
+    <h2 style="color: crimson;">Sales</h2>
+    <ul class="loserGrid">
       <% user.sold.forEach(tx => { %>
-        <li>SELL <%= tx.amount %> share(s) of <%= tx.ticker %> at $<%= tx.price %> each</li>
+        <li class="loser card">
+            <p>SELL <%= tx.ticker %> </p>
+            <p>Amount: <%= tx.amount %></p>
+            <p>Price: $<%= tx.price %></p>
+        </li>
       <% }) %>
     </ul>
   <% } %>
 
   <br>
-  <a href="/">Back to Home</a> | <a href="/logout">Logout</a>
+  
+  
 </body>
 </html>
