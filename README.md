@@ -37,7 +37,7 @@ Group Members: Maiwand Raheem (mraheem), Abdullatif Elmuaqqat (Aelmuaqq), Abdull
 
 App Description: TradersHub is a stock simulator platform where users can register, view real-time stock data, and simulate buying and selling shares. All transactions are stored and displayed in each user's personal dashboard.
 
-YouTube Video Link: 
+YouTube Video Link: https://youtu.be/OI1tSPNjzfQ
 
 APIs: Stocks API (https://www.alphavantage.co/documentation/)
 
