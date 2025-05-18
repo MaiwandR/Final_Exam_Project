@@ -25,4 +25,18 @@ If not -> ERROR MESSAGE -> same Page
   - DB_NAME = Stocks
   - MONGO_COLLECTION = userStocks
   - SESSION_SECRET = '8c62812784392ae64d9b07e3e3355e32cb20cf636c9a36927ab77ddb3c40912c'
+ 
+
+
+
+
+
+Submitted by: Maiwand Raheem (directory id: mraheem)
+Group Members: Maiwand Raheem (mraheem), Abdullatif Elmuaqqat (Aelmuaqq), Abdullah Shamsan (Ashamsan), 
+App Description: TradersHub is a stock simulator platform where users can register, view real-time stock data, and simulate buying and selling shares. All transactions are stored and displayed in each user's personal dashboard.
+YouTube Video Link: 
+APIs: Stocks API (https://www.alphavantage.co/documentation/)
+Contact Email: mraheem@terpmail.umd.edu
+Contact Email: aelmuaqq@terpmail.umd.edu
+Deployed App Link: 
     
