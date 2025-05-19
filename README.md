@@ -23,7 +23,8 @@ App Details:
 
   - **API URL HOME**: https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=demo
         *(Make a free API Key and use it while you are working)*
-  - For the page in the current version, I have dummy data you can use if you run out of tokens for the API
+  - For the current version of the APP, since the API has limitations of 25 calls per day, I have made it so it displays some dummy/placeholder data so that users can still see how the page would funtion normally.
+  If you see 2 results on the front page, it means you have run out of API calls, but other functionality still works.
 - **Stock Detail Page:** This page will take a stock name like TSLA, AAPL, etc, and then show info about it. Currently, just the opening and closing data of the last 10 days for a stock.
     - **Detail Page URL:** https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=AAPL&apikey=demo
 - **Register Page:** This page will basically be activated when someone wants to buy or sell. *(For this page to show up the session.userid should no exist)*
