@@ -1,5 +1,23 @@
 # Final_Exam_Project: *TradersHub*
 
+Submitted by: Maiwand Raheem (directory id: mraheem)
+
+Group Members: Maiwand Raheem (mraheem), Abdullatif Elmuaqqat (Aelmuaqq), Abdullah Shamsan (Ashamsan), Alexis Bantilan (abantila)
+
+App Description: TradersHub is a stock simulator platform where users can register, view real-time stock data, and simulate buying and selling shares. All transactions are stored and displayed in each user's personal dashboard.
+
+YouTube Video Link: https://youtu.be/OI1tSPNjzfQ
+
+APIs: Stocks API (https://www.alphavantage.co/documentation/)
+
+Contact Email: mraheem@terpmail.umd.edu
+
+Contact Email: aelmuaqq@terpmail.umd.edu
+
+Deployed App Link: https://final-exam-project-2.onrender.com
+    
+App Details:
+
 ### Main Features: 
 - **Stock Front Page:** This will be the homepage and will use the API to show active, profitable, and losing stocks
 
@@ -26,24 +44,3 @@ If not -> ERROR MESSAGE -> same Page
   - MONGO_COLLECTION = userStocks
   - SESSION_SECRET = '8c62812784392ae64d9b07e3e3355e32cb20cf636c9a36927ab77ddb3c40912c'
  
-
-
-
-
-
-Submitted by: Maiwand Raheem (directory id: mraheem)
-
-Group Members: Maiwand Raheem (mraheem), Abdullatif Elmuaqqat (Aelmuaqq), Abdullah Shamsan (Ashamsan), 
-
-App Description: TradersHub is a stock simulator platform where users can register, view real-time stock data, and simulate buying and selling shares. All transactions are stored and displayed in each user's personal dashboard.
-
-YouTube Video Link: https://youtu.be/OI1tSPNjzfQ
-
-APIs: Stocks API (https://www.alphavantage.co/documentation/)
-
-Contact Email: mraheem@terpmail.umd.edu
-
-Contact Email: aelmuaqq@terpmail.umd.edu
-
-Deployed App Link: https://final-exam-project-2.onrender.com
-    
