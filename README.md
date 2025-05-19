@@ -21,7 +21,8 @@ App Details:
 ### Main Features: 
 - **Stock Front Page:** This will be the homepage and will use the API to show active, profitable, and losing stocks
 
-  - **API URL HOME**: https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=demo *(Make a free API Key and use it while you are working)*
+  - **API URL HOME**: https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=demo
+        *(Make a free API Key and use it while you are working)*
   - For the page in the current version, I have dummy data you can use if you run out of tokens for the API
 - **Stock Detail Page:** This page will take a stock name like TSLA, AAPL, etc, and then show info about it. Currently, just the opening and closing data of the last 10 days for a stock.
     - **Detail Page URL:** https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=AAPL&apikey=demo
@@ -30,17 +31,8 @@ App Details:
 - **Login Page**: Just a way for users to enter their username and password -> this is checked in MongoDB, and if they are correct, they are taken -> HOMEPAGE
 If not -> ERROR MESSAGE -> same Page
 
-### Features Yet Completed:
-- Buy Button: must increase the share amount for a stock
-- Sell Button: Must decrease the share amount for a stock
-- User dashboard with owned stocks and history of transactions
-
-### Important Resources:
-- API Documentation: https://www.alphavantage.co/documentation/
-- This is what your .env should look like:
-  - API_KEY = '4T8RGLNO9B2C5PCI'
-  - DB_CONNECT_STRING = 'mongodb+srv://maiwandraheem:Wawreena1234@cluster0.2rftkuj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
-  - DB_NAME = Stocks
-  - MONGO_COLLECTION = userStocks
-  - SESSION_SECRET = '8c62812784392ae64d9b07e3e3355e32cb20cf636c9a36927ab77ddb3c40912c'
+### Future Plans:
+- Use a prediction model to help users predict whether the stock will go up or down based on past data
+- Have payment authentication
+- Have the user dashboard contain a holistic breakdown of the stocks they have
  
